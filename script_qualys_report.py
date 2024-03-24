@@ -62,7 +62,6 @@ def parse_xml(xml_file):
 
                     vulnerabilities.append({
                         'IP': ip,
-                        'Category': cat_value,
                         'Severity': severity,
                         'THREAT': diagnosis[0] if diagnosis else '',  # Ajuste para acessar o primeiro item da lista traduzida
                         'IMPACT': consequence[0] if consequence else '',  # Ajuste para acessar o primeiro item da lista traduzida
@@ -86,7 +85,6 @@ def parse_xml(xml_file):
 
                     vulnerabilities.append({
                         'IP': ip,
-                        'Category': cat_value,
                         'Severity': severity,
                         'THREAT': diagnosis[0] if diagnosis else '',  # Ajuste para acessar o primeiro item da lista traduzida
                         'IMPACT': consequence[0] if consequence else '',  # Ajuste para acessar o primeiro item da lista traduzida
@@ -97,7 +95,7 @@ def parse_xml(xml_file):
 
 def write_to_csv(vulnerabilities, output_file):
     with open(output_file, mode='w', newline='') as file:
-        writer = csv.DictWriter(file, fieldnames=['IP', 'Category', 'Severity', 'THREAT', 'IMPACT', 'Solution'], delimiter=';')
+        writer = csv.DictWriter(file, fieldnames=['IP', 'Severity', 'THREAT', 'IMPACT', 'Solution'], delimiter=';')
         writer.writeheader()  # Escreve o cabeçalho no arquivo CSV
         writer.writerows(vulnerabilities)  # Escreve as vulnerabilidades no arquivo CSV
 
